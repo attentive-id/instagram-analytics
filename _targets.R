@@ -25,11 +25,9 @@ raws <- lsData(pattern = "*csv")
 # Set the analysis pipeline
 list(
 
-  # List data files
-  tar_target(fpath, raws[["data"]], format = "file"),
-
   # Read the data frame
-  tar_target(tbl, readData(fpath)),
+  tar_target(tbls, lapply(raws, readData)),
+  tar_target(metrics, mergeMetrics(tbls[-1])),
 
   # Generate documentation
   tar_quarto(readme, "README.qmd", priority = 0)

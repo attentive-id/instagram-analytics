@@ -18,3 +18,7 @@
 !*bib
 !*yml
 !*.tex
+!*environ
+
+# Blacklist specific directories
+_targets/

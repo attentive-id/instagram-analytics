@@ -23,7 +23,35 @@ readData <- function(fpath, ...) {
   #' @inheritDotParams readr::read_csv
   #' @return A tidy data frame
 
-  tbl <- readr::read_csv(fpath, ...)
+  tbl <- tryCatch(
+    readr::read_csv(fpath, ...),
+    error = function(e) { # Follows, visits, and reach use different encoding
+      readr::read_csv(
+        fpath,
+        locale = readr::locale(encoding = "UCS-2LE"),
+        skip = 2,
+        ...
+      )
+    }
+  )
 
   return(tbl)
 }
+
+mergeMetrics <- function(sub_tbls, ...) {
+  #' Merge Meta Business Metrics
+  #'
+  #' Merge follows, reach, and visits into one data frame
+  #'
+  #' @param sub_tbls A list of data frame containing follows, reach, and visits
+  #' @inheritDotParams merge
+  #' @return A tidy data frame
+
+  varname <- names(sub_tbls)
+  tbl <- Reduce(\(x, y) merge(x, y, by = "Date", ...), sub_tbls) |>
+    set_colnames(c("Date", varname)) |>
+    tibble::tibble()
+
+  return(tbl)
+}
+
