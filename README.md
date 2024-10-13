@@ -3,18 +3,37 @@
 # Data preparation
 
 All the data used in this analysis are sourced from Meta Business Suite.
-You will need to export four data to work with: 1. `content.csv`, by
-hovering over the sidebar $\to$ Click Insight $\to$ Content $\to$ Select
-needed variables $\to$ Narrow down the time frame $\to$ Export data.
-This data must contain the following fields: - Post ID - Account ID -
-Account username - Account name - Description - Duration (secs) -
-Publish time - Permalink - Post type - Data comment - Date -
-Impression - Reach - Likes - Shares - Comments - Saves - Follows -
-Plays 1. `Follows.csv`, by hovering over the sidebar $\to$ Click Insight
-$\to$ Results $\to$ Export the “Follows” section. 1. `Reach.csv`, by
-hovering over the sidebar $\to$ Click Insight $\to$ Results $\to$ Export
-the “Reach” section. 1. `Visits.csv`, by hovering over the sidebar $\to$
-Click Insight $\to$ Results $\to$ Export the “Visits” section.
+You will need to export four data to work with:
+
+1.  `content.csv`, by hovering over the sidebar $\to$ Click Insight
+    $\to$ Content $\to$ Select needed variables $\to$ Narrow down the
+    time frame $\to$ Export data. This data must contain the following
+    fields:
+    - Post ID
+    - Account ID
+    - Account username
+    - Account name
+    - Description
+    - Duration (secs)
+    - Publish time
+    - Permalink
+    - Post type
+    - Data comment
+    - Date
+    - Impression
+    - Reach
+    - Likes
+    - Shares
+    - Comments
+    - Saves
+    - Follows
+    - Plays
+2.  `Follows.csv`, by hovering over the sidebar $\to$ Click Insight
+    $\to$ Results $\to$ Export the “Follows” section.
+3.  `Reach.csv`, by hovering over the sidebar $\to$ Click Insight $\to$
+    Results $\to$ Export the “Reach” section.
+4.  `Visits.csv`, by hovering over the sidebar $\to$ Click Insight $\to$
+    Results $\to$ Export the “Visits” section.
 
 # Getting started
 
@@ -89,19 +108,17 @@ graph LR
   style Graph fill:#FFFFFF00,stroke:#000000;
   subgraph Legend
     direction LR
-    x2db1ec7a48f65a9b([""Outdated""]):::outdated --- xb6630624a7b3aa0f([""Dispatched""]):::dispatched
-    xb6630624a7b3aa0f([""Dispatched""]):::dispatched --- xf1522833a4d242c5([""Up to date""]):::uptodate
-    xf1522833a4d242c5([""Up to date""]):::uptodate --- xd03d7c7dd2ddda2b([""Stem""]):::none
+    xf1522833a4d242c5([""Up to date""]):::uptodate --- xb6630624a7b3aa0f([""Dispatched""]):::dispatched
+    xb6630624a7b3aa0f([""Dispatched""]):::dispatched --- xd03d7c7dd2ddda2b([""Stem""]):::none
     xd03d7c7dd2ddda2b([""Stem""]):::none --- xeb2d7cac8a1ce544>""Function""]:::none
     xeb2d7cac8a1ce544>""Function""]:::none --- xbecb13963f49e50b{{""Object""}}:::none
   end
   subgraph Graph
     direction LR
-    xe58bddd751ff431b(["fpath"]):::outdated --> xd5845efd825040d8(["tbls"]):::outdated
-    x18b26034ab3a95e2>"readData"]:::uptodate --> xd5845efd825040d8(["tbls"]):::outdated
-    xf6472bd5309d8529>"mergeMetrics"]:::uptodate --> x544e14c8fac2c5b0(["metrics"]):::outdated
-    xd5845efd825040d8(["tbls"]):::outdated --> x544e14c8fac2c5b0(["metrics"]):::outdated
-    x1f6d76ea8940cecf{{"raws"}}:::uptodate --> xe58bddd751ff431b(["fpath"]):::outdated
+    x1f6d76ea8940cecf{{"raws"}}:::uptodate --> xd5845efd825040d8(["tbls"]):::uptodate
+    x18b26034ab3a95e2>"readData"]:::uptodate --> xd5845efd825040d8(["tbls"]):::uptodate
+    xf6472bd5309d8529>"mergeMetrics"]:::uptodate --> x544e14c8fac2c5b0(["metrics"]):::uptodate
+    xd5845efd825040d8(["tbls"]):::uptodate --> x544e14c8fac2c5b0(["metrics"]):::uptodate
     xc11069275cfeb620(["readme"]):::dispatched --> xc11069275cfeb620(["readme"]):::dispatched
     x07bf962581a33ad1{{"funs"}}:::uptodate --> x07bf962581a33ad1{{"funs"}}:::uptodate
     x2f12837377761a1b{{"pkgs"}}:::uptodate --> x2f12837377761a1b{{"pkgs"}}:::uptodate
@@ -109,21 +126,19 @@ graph LR
     x4d3ec24f81457d7f{{"seed"}}:::uptodate --> x4d3ec24f81457d7f{{"seed"}}:::uptodate
     x3eac3c5af5491b67>"lsData"]:::uptodate --> x3eac3c5af5491b67>"lsData"]:::uptodate
   end
-  classDef outdated stroke:#000000,color:#000000,fill:#78B7C5;
-  classDef dispatched stroke:#000000,color:#000000,fill:#DC863B;
   classDef uptodate stroke:#000000,color:#ffffff,fill:#354823;
+  classDef dispatched stroke:#000000,color:#000000,fill:#DC863B;
   classDef none stroke:#000000,color:#000000,fill:#94a4ac;
   linkStyle 0 stroke-width:0px;
   linkStyle 1 stroke-width:0px;
   linkStyle 2 stroke-width:0px;
   linkStyle 3 stroke-width:0px;
-  linkStyle 4 stroke-width:0px;
+  linkStyle 8 stroke-width:0px;
+  linkStyle 9 stroke-width:0px;
   linkStyle 10 stroke-width:0px;
   linkStyle 11 stroke-width:0px;
   linkStyle 12 stroke-width:0px;
   linkStyle 13 stroke-width:0px;
-  linkStyle 14 stroke-width:0px;
-  linkStyle 15 stroke-width:0px;
 ```
 
 # `R` session information
