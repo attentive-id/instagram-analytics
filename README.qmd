@@ -13,6 +13,33 @@ pkgs_load <- sapply(pkgs, library, character.only = TRUE)
 
 ```
 
+# Data preparation
+
+All the data used in this analysis are sourced from Meta Business Suite. You will need to export four data to work with:
+1. `content.csv`, by hovering over the sidebar $\to$ Click Insight $\to$ Content $\to$ Select needed variables $\to$ Narrow down the time frame $\to$ Export data. This data must contain the following fields:
+   - Post ID
+   - Account ID
+   - Account username
+   - Account name
+   - Description
+   - Duration (secs)
+   - Publish time
+   - Permalink
+   - Post type
+   - Data comment
+   - Date
+   - Impression
+   - Reach
+   - Likes
+   - Shares
+   - Comments
+   - Saves
+   - Follows
+   - Plays
+1. `Follows.csv`, by hovering over the sidebar $\to$ Click Insight $\to$ Results $\to$ Export the "Follows" section.
+1. `Reach.csv`, by hovering over the sidebar $\to$ Click Insight $\to$ Results $\to$ Export the "Reach" section.
+1. `Visits.csv`, by hovering over the sidebar $\to$ Click Insight $\to$ Results $\to$ Export the "Visits" section.
+
 # Getting started
 
 Most of the works in this repository, especially the `R` scripts, should be directly reproducible. You'll need [`git`](https://git-scm.com/downloads), [`R`](https://www.r-project.org/), [`quarto`](https://quarto.org/docs/download/), and more conveniently [RStudio IDE](https://posit.co/downloads/) installed and running well in your system. You simply need to fork/clone this repository using RStudio by following [this tutorial, start right away from `Step 2`](https://book.cds101.com/using-rstudio-server-to-clone-a-github-repo-as-a-new-project.html#step---2). Using terminal in linux/MacOS, you can issue the following command:
@@ -39,7 +66,10 @@ This step will read `renv.lock` file and install required packages to your local
 data
 ├── ...
 ├── raw
-│   └── data.csv
+│   ├── content.csv
+│   ├── Follows.csv
+│   ├── Reach.csv
+│   └── Visits.csv
 └── ...
 ```
 
