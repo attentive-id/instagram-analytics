@@ -54,4 +54,3 @@ mergeContent <- function(metrics, content, ...) {
   return(tbl)
 }
 
-mergeContent(tar_read(metrics), tar_read(content)) |> str()
