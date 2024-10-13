@@ -16,6 +16,7 @@ pkgs_load <- sapply(pkgs, library, character.only = TRUE)
 # Data preparation
 
 All the data used in this analysis are sourced from Meta Business Suite. You will need to export four data to work with:
+
 1. `content.csv`, by hovering over the sidebar $\to$ Click Insight $\to$ Content $\to$ Select needed variables $\to$ Narrow down the time frame $\to$ Export data. This data must contain the following fields:
    - Post ID
    - Account ID
