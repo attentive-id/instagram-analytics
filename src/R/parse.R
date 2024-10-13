@@ -38,20 +38,3 @@ readData <- function(fpath, ...) {
   return(tbl)
 }
 
-mergeMetrics <- function(sub_tbls, ...) {
-  #' Merge Meta Business Metrics
-  #'
-  #' Merge follows, reach, and visits into one data frame
-  #'
-  #' @param sub_tbls A list of data frame containing follows, reach, and visits
-  #' @inheritDotParams merge
-  #' @return A tidy data frame
-
-  varname <- names(sub_tbls)
-  tbl <- Reduce(\(x, y) merge(x, y, by = "Date", ...), sub_tbls) |>
-    set_colnames(c("Date", varname)) |>
-    tibble::tibble()
-
-  return(tbl)
-}
-
