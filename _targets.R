@@ -29,6 +29,10 @@ list(
   tar_target(tbls, lapply(raws, readData)),
   tar_target(metrics, mergeMetrics(tbls[-1])),
 
+  # Clean and combine the dataset
+  tar_target(content, cleanContent(tbls[[1]])),
+  tar_target(tbl, mergeContent(metrics, content)),
+
   # Generate documentation
   tar_quarto(readme, "README.qmd", priority = 0)
 
