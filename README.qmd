@@ -90,3 +90,11 @@ This is the functional pipeline for conducting statistical analysis. The complet
 cat("```mermaid", tar_mermaid(), "```", sep = "\n")
 
 ```
+
+# `R` session information
+
+```{r}
+
+sessionInfo()
+
+```
