@@ -33,6 +33,9 @@ list(
   tar_target(content, cleanContent(tbls[[1]])),
   tar_target(tbl, mergeContent(metrics, content)),
 
+  # Write cleaned dataset to the storage
+  tar_target(dat, readr::write_csv(tbl, "data/processed/data.csv")),
+
   # Generate documentation
   tar_quarto(readme, "README.qmd", priority = 0)
 
