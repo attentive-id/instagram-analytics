@@ -76,7 +76,47 @@ mkTs <- function(tbl) {
       dplyr::contains("_Reach"),
       dplyr::contains("_Visits")
     ) |>
-    tsibble::tsibble(index = Date)
+    tsibble::tsibble(index = Date) |>
+    tsibble::fill_gaps() |>
+    doAcrossInt(imputeTS::na_interpolation, option = "spline")
 
   return(ts)
+}
+
+diffSeries <- function(arr, order = 1) {
+  #' Difference Time-Series
+  #'
+  #' Perform an n-order differencing to a time series then interpolate any NA
+  #' due to the side effect of differencing.
+  #'
+  #' @param arr A numeric array
+  #' @param order The order for differencing
+  #' @return A numeric array
+
+  res <- tsibble::difference(arr, differences = order) |>
+    imputeTS::na_interpolation(option = "spline")
+
+  return(res)
+}
+
+regularize <- function(arr) {
+  #' Regularize an Array
+  #'
+  #' Transform an array into its Z-Score.
+  #'
+  #' @param arr A numeric array
+  #' @return A regularized numeric array
+
+  xbar <- mean(arr, na.rm = TRUE)
+  sdev <- sd(arr, na.rm = TRUE)
+
+  arr_resid <- {arr - xbar}
+
+  if (sdev == 0) {
+    return(arr_resid)
+  }
+
+  res <- arr_resid / sdev
+  
+  return(res)
 }
