@@ -49,7 +49,15 @@ mergeContent <- function(metrics, content, ...) {
   #' @return A tidy data frame
 
   tbl <- dplyr::left_join(metrics, content, by = "Date", ...) |>
-    dplyr::mutate(has_post = !is.na(URL), .after = 4)
+    dplyr::mutate(
+      has_post = !is.na(URL),
+      dplyr::across(
+        dplyr::contains("daily"), cumsum, .names = "cum_{.col}"
+      ),
+      mutateRollingStat("daily", zoo::rollsum, k = 7, .names = "sum7_{.col}"),
+      mutateRollingStat("daily", zoo::rollmean, k = 7, .names = "mean7_{.col}"),
+      .after = 4
+    )
 
   return(tbl)
 }
