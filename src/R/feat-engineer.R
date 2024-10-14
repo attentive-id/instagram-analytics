@@ -13,8 +13,7 @@ padRollingStat <- function(arr, FUN, k, ...) {
   #' @return A padded rolling statistics
 
   n     <- length(arr)
-  left  <- arr[1:k]
-  res   <- c(FUN(left, k = 2, align = "left"), FUN(arr, k = k, ...))
+  res   <- c(rep(NA, k-1), FUN(arr, k = k, ...))
 
   return(res)
 }
