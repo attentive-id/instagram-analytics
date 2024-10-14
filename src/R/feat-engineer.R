@@ -39,6 +39,24 @@ mutateRollingStat <- function(pattern, ..., .names = "{.col}") {
   return(res)
 }
 
+doAcrossInt <- function(tbl, FUN, ...) {
+  #' Do Across Integer
+  #'
+  #' Wrapper function to apply other functions across all integer variables in
+  #' a tidy data frame.
+  #'
+  #' @param tbl A tidy data frame
+  #' @param FUN The function to be applied
+  #' @param ... Parameters being passed on to `FUN`
+
+  res <- tbl |>
+    dplyr::mutate(
+      dplyr::across(is.numeric, ~ FUN(.x, ...))
+    )
+
+  return(res)
+}
+
 mkTs <- function(tbl) {
   #' Make Time-Series Data
   #'
