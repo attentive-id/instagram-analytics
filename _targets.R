@@ -73,7 +73,7 @@ list(
       fname = c("var", "svar")
     ),
     names = "fname",
-    tar_target(mod_fevd, getFEVD(mod)),
+    tar_target(mod_fevd, getFEVD(mod, n.ahead = 7)),
     tar_target(plt_fevd, svars:::plot.svarfevd(mod_fevd)),
     tar_target(fig_fevd, ggplot2::ggsave(plt_fevd, file = sprintf("docs/figs/plt-%s-fevd.pdf", fname), height = 8 , width = 12))
   ),
