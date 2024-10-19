@@ -22,3 +22,6 @@
 
 # Blacklist specific directories
 _targets/
+
+# Blacklist specific files
+sync.sh
