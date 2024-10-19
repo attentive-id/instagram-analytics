@@ -115,15 +115,62 @@ graph LR
   end
   subgraph Graph
     direction LR
-    x1f6d76ea8940cecf{{"raws"}}:::uptodate --> xd5845efd825040d8(["tbls"]):::uptodate
-    x18b26034ab3a95e2>"readData"]:::uptodate --> xd5845efd825040d8(["tbls"]):::uptodate
+    x95244cd38d58fbcc>"doAcrossInt"]:::uptodate --> xa3379aa2e7a70b78>"mkTs"]:::uptodate
+    x724eeab36ed1f083>"padRollingStat"]:::uptodate --> x31ab83458983f7b0>"mutateRollingStat"]:::uptodate
+    x31ab83458983f7b0>"mutateRollingStat"]:::uptodate --> xe93ec73e599e9f3a>"mergeContent"]:::uptodate
+    x97f0d81d4ffb5185(["mod_var"]):::uptodate --> x6f7b59d9d21e4832(["mod_irf_var"]):::uptodate
+    x4d3ec24f81457d7f{{"seed"}}:::uptodate --> x6f7b59d9d21e4832(["mod_irf_var"]):::uptodate
+    xd0b291773e1b802e>"identifySVAR"]:::uptodate --> xaf871c6c095ab6bc(["mod_svar"]):::uptodate
+    x97f0d81d4ffb5185(["mod_var"]):::uptodate --> xaf871c6c095ab6bc(["mod_svar"]):::uptodate
+    x40c6ebc03e2a4d18(["plt_pair_Visits<br>Visits"]):::uptodate --> xc00958553576e207(["fig_pair_Visits<br>Visits"]):::uptodate
+    x8c4db3d44bfd96ea(["ts_reg"]):::uptodate --> x213e59fc01691420(["plt_pair_Reach<br>Reach"]):::uptodate
+    x7e257c6f0f1d998e>"vizPair"]:::uptodate --> x213e59fc01691420(["plt_pair_Reach<br>Reach"]):::uptodate
+    x008512a539ff5dfc(["plt_fevd_var<br>mod_var var"]):::uptodate --> x8fbd8454e9d2cdd2(["fig_fevd_var<br>mod_var var"]):::uptodate
+    x7463155e3b339356(["plt_pair_Follows<br>Follows"]):::uptodate --> x508f5e45b18d96e5(["fig_pair_Follows<br>Follows"]):::uptodate
     xf6472bd5309d8529>"mergeMetrics"]:::uptodate --> x544e14c8fac2c5b0(["metrics"]):::uptodate
     xd5845efd825040d8(["tbls"]):::uptodate --> x544e14c8fac2c5b0(["metrics"]):::uptodate
+    xa3379aa2e7a70b78>"mkTs"]:::uptodate --> x857eb9596b9670e5(["ts_metrics"]):::uptodate
+    x0c73c8f7e50fb4f6(["tbl_metrics"]):::uptodate --> x857eb9596b9670e5(["ts_metrics"]):::uptodate
+    xc3cf8e64d6bc2338(["plt_fevd_svar<br>mod_svar svar"]):::uptodate --> xc298d12281b5aa84(["fig_fevd_svar<br>mod_svar svar"]):::uptodate
+    x1f6d76ea8940cecf{{"raws"}}:::uptodate --> xd5845efd825040d8(["tbls"]):::uptodate
+    x18b26034ab3a95e2>"readData"]:::uptodate --> xd5845efd825040d8(["tbls"]):::uptodate
+    x95244cd38d58fbcc>"doAcrossInt"]:::uptodate --> x8c4db3d44bfd96ea(["ts_reg"]):::uptodate
+    x3c3eb5c9cb51afb7>"regularize"]:::uptodate --> x8c4db3d44bfd96ea(["ts_reg"]):::uptodate
+    xb6ac687628bbec9f(["ts_diff"]):::uptodate --> x8c4db3d44bfd96ea(["ts_reg"]):::uptodate
+    xd63b4bcad7171bbe(["mod_irf_svar"]):::uptodate --> xb5b41e8e0ef61222(["plt_irf_svar"]):::uptodate
+    x7a33e84e73f9652d>"getFEVD"]:::uptodate --> x1068365036019d2b(["mod_fevd_svar<br>mod_svar svar"]):::uptodate
+    xaf871c6c095ab6bc(["mod_svar"]):::uptodate --> x1068365036019d2b(["mod_fevd_svar<br>mod_svar svar"]):::uptodate
+    x1068365036019d2b(["mod_fevd_svar<br>mod_svar svar"]):::uptodate --> xc3cf8e64d6bc2338(["plt_fevd_svar<br>mod_svar svar"]):::uptodate
+    x8c4db3d44bfd96ea(["ts_reg"]):::uptodate --> x7463155e3b339356(["plt_pair_Follows<br>Follows"]):::uptodate
+    x7e257c6f0f1d998e>"vizPair"]:::uptodate --> x7463155e3b339356(["plt_pair_Follows<br>Follows"]):::uptodate
+    x8c4db3d44bfd96ea(["ts_reg"]):::uptodate --> x29df927b24746e7f(["dat_series"]):::uptodate
+    xb5b41e8e0ef61222(["plt_irf_svar"]):::uptodate --> x033ab300685987e4(["fig_irf_svar"]):::uptodate
+    x4bd3181fc8b3776f>"cleanContent"]:::uptodate --> xdb9aad8c6606dba7(["content"]):::uptodate
+    xd5845efd825040d8(["tbls"]):::uptodate --> xdb9aad8c6606dba7(["content"]):::uptodate
+    x25e6368b6c321d5d>"fitVAR"]:::uptodate --> x97f0d81d4ffb5185(["mod_var"]):::uptodate
+    x8c4db3d44bfd96ea(["ts_reg"]):::uptodate --> x97f0d81d4ffb5185(["mod_var"]):::uptodate
+    x7a33e84e73f9652d>"getFEVD"]:::uptodate --> x70fe34ce349392c4(["mod_fevd_var<br>mod_var var"]):::uptodate
+    x97f0d81d4ffb5185(["mod_var"]):::uptodate --> x70fe34ce349392c4(["mod_fevd_var<br>mod_var var"]):::uptodate
+    xdb9aad8c6606dba7(["content"]):::uptodate --> x0c73c8f7e50fb4f6(["tbl_metrics"]):::uptodate
+    xe93ec73e599e9f3a>"mergeContent"]:::uptodate --> x0c73c8f7e50fb4f6(["tbl_metrics"]):::uptodate
+    x544e14c8fac2c5b0(["metrics"]):::uptodate --> x0c73c8f7e50fb4f6(["tbl_metrics"]):::uptodate
+    x6f7b59d9d21e4832(["mod_irf_var"]):::uptodate --> xad62adf3b89773bd(["fig_irf_var"]):::uptodate
+    xe519ca1abae00296>"saveFig"]:::uptodate --> xad62adf3b89773bd(["fig_irf_var"]):::uptodate
+    x63b2eeaa35defdcd>"evalUnitRoot"]:::uptodate --> xd2ec401c4ce33bb6(["res_adf"]):::uptodate
+    x8c4db3d44bfd96ea(["ts_reg"]):::uptodate --> xd2ec401c4ce33bb6(["res_adf"]):::uptodate
+    x0c73c8f7e50fb4f6(["tbl_metrics"]):::uptodate --> x556b00330c5941b4(["dat_metrics"]):::uptodate
+    xaf871c6c095ab6bc(["mod_svar"]):::uptodate --> xd63b4bcad7171bbe(["mod_irf_svar"]):::uptodate
+    xb41da213b729c2ba>"diffSeries"]:::uptodate --> xb6ac687628bbec9f(["ts_diff"]):::uptodate
+    x95244cd38d58fbcc>"doAcrossInt"]:::uptodate --> xb6ac687628bbec9f(["ts_diff"]):::uptodate
+    x857eb9596b9670e5(["ts_metrics"]):::uptodate --> xb6ac687628bbec9f(["ts_diff"]):::uptodate
+    x8c4db3d44bfd96ea(["ts_reg"]):::uptodate --> x40c6ebc03e2a4d18(["plt_pair_Visits<br>Visits"]):::uptodate
+    x7e257c6f0f1d998e>"vizPair"]:::uptodate --> x40c6ebc03e2a4d18(["plt_pair_Visits<br>Visits"]):::uptodate
+    x70fe34ce349392c4(["mod_fevd_var<br>mod_var var"]):::uptodate --> x008512a539ff5dfc(["plt_fevd_var<br>mod_var var"]):::uptodate
+    x213e59fc01691420(["plt_pair_Reach<br>Reach"]):::uptodate --> xeec8dfdc96875de7(["fig_pair_Reach<br>Reach"]):::uptodate
     xc11069275cfeb620(["readme"]):::dispatched --> xc11069275cfeb620(["readme"]):::dispatched
     x07bf962581a33ad1{{"funs"}}:::uptodate --> x07bf962581a33ad1{{"funs"}}:::uptodate
     x2f12837377761a1b{{"pkgs"}}:::uptodate --> x2f12837377761a1b{{"pkgs"}}:::uptodate
     x026e3308cd8be8b9{{"pkgs_load"}}:::uptodate --> x026e3308cd8be8b9{{"pkgs_load"}}:::uptodate
-    x4d3ec24f81457d7f{{"seed"}}:::uptodate --> x4d3ec24f81457d7f{{"seed"}}:::uptodate
     x3eac3c5af5491b67>"lsData"]:::uptodate --> x3eac3c5af5491b67>"lsData"]:::uptodate
   end
   classDef uptodate stroke:#000000,color:#ffffff,fill:#354823;
@@ -133,12 +180,11 @@ graph LR
   linkStyle 1 stroke-width:0px;
   linkStyle 2 stroke-width:0px;
   linkStyle 3 stroke-width:0px;
-  linkStyle 8 stroke-width:0px;
-  linkStyle 9 stroke-width:0px;
-  linkStyle 10 stroke-width:0px;
-  linkStyle 11 stroke-width:0px;
-  linkStyle 12 stroke-width:0px;
-  linkStyle 13 stroke-width:0px;
+  linkStyle 56 stroke-width:0px;
+  linkStyle 57 stroke-width:0px;
+  linkStyle 58 stroke-width:0px;
+  linkStyle 59 stroke-width:0px;
+  linkStyle 60 stroke-width:0px;
 ```
 
 # `R` session information
