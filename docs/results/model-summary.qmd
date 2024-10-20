@@ -1,0 +1,14 @@
+---
+format: gfm
+output-ext: txt
+---
+
+```{r}
+#| echo: false
+
+pkgs <- c("magrittr", "targets", "tarchetypes", "crew")
+pkgs_load <- sapply(pkgs, library, character.only = TRUE)
+
+tar_read(mod_var) |> summary()
+
+```
