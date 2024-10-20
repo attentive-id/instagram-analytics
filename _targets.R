@@ -32,6 +32,9 @@ list(
   # Clean and combine the dataset
   tar_target(content, cleanContent(tbls[[1]])),
   tar_target(tbl_metrics, mergeContent(metrics, content)),
+  
+  # Describe the dataset
+  tar_target(desc_metrics, describe(metrics)),
 
   # Create a time-series from merged dataset
   tar_target(ts_metrics, mkTs(tbl_metrics)),
@@ -79,6 +82,8 @@ list(
   ),
 
   # Generate documentation
+  tar_quarto(res_metrics, "docs/results/data-summary.qmd", priority = 0),
+  tar_quarto(res_mod_var, "docs/results/model-summary.qmd", priority = 0),
   tar_quarto(readme, "README.qmd", priority = 0)
 
 )
